@@ -1,0 +1,9 @@
+.btn {
+  @apply flex items-center justify-center gap-x-4 px-8 py-2 text-sm font-medium transition-all duration-500 ease-in-out;
+}
+.btn-primary {
+  @apply bg-primary text-white;
+}
+.btn-gray {
+  @apply bg-gray-100 text-black hover:bg-gray-200;
+}
