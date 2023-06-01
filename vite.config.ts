@@ -4,11 +4,11 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  resolve: {
-    alias: {
-      src: '/src',
-    },
-  },
+  // resolve: {
+  //   alias: {
+  //     src: '/src',
+  //   },
+  // },
   server: {
     port: 3000,
   },

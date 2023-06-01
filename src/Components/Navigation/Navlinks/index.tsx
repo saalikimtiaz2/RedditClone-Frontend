@@ -6,7 +6,18 @@ import { MdOutlineSportsBaseball } from 'react-icons/md'
 import { SlScreenDesktop } from 'react-icons/sl'
 import { VscHome } from 'react-icons/vsc'
 
-export const Feeds = [
+type feedsTypes = {
+  label: string
+  link: string
+  icon: React.ReactNode
+}
+type topicsTypes = {
+  label: string
+  link: string
+  icon: React.ReactNode
+}
+
+export const Feeds: feedsTypes[] = [
   {
     label: 'Home',
     link: '/',
@@ -19,7 +30,7 @@ export const Feeds = [
   },
 ]
 
-export const Topics = [
+export const Topics: topicsTypes[] = [
   {
     label: 'Gaming',
     link: '/',
