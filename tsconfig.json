@@ -7,14 +7,14 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "pages/*": ["./src/pages/*"],
-      "components/*": ["./src/components/*"],
-      "containers/*": ["./src/containers/*"],
-      "interfaces/*": ["./src/interfaces/*"],
-      "hooks/*": ["./src/hooks/*"],
-      "redux/*": ["./src/redux/*"],
-      "data/*": ["./src/data/*"],
-      "styles/*": ["./src/styles/*"]
+      "@pages/*": ["./src/pages/*"],
+      "@components/*": ["./src/components/*"],
+      "@containers/*": ["./src/containers/*"],
+      "@interfaces/*": ["./src/interfaces/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@redux/*": ["./src/redux/*"],
+      "@data/*": ["./src/data/*"],
+      "@styles/*": ["./src/styles/*"]
     },
 
     /* Bundler mode */

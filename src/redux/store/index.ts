@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import rootReducer from 'redux/reducers'
+import rootReducer from 'src/redux/reducers'
 
 export type RootState = ReturnType<typeof rootReducer>
 
