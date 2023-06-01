@@ -3,7 +3,7 @@ import Layout from 'src/Components/Layout'
 function Home() {
   return (
     <Layout>
-      <div className='relative flex h-screen flex-col items-center justify-center bg-gradient-to-b from-primary to-secondary'>
+      <div className='relative flex h-screen flex-col items-center justify-center'>
         <h1 className='mb-4 text-5xl font-bold text-white'>Reddit Clone</h1>
         <p className='text-3xl text-white'>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, sed?

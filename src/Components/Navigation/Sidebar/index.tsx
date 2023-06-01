@@ -1,10 +1,15 @@
-import { useSelector } from 'react-redux'
-import { RootState } from 'src/redux/store'
+import Menu from './Menu'
 
 function Sidebar() {
-  const { dark } = useSelector((state: RootState) => state.themeSlice)
-
-  return <div className={`w-[270px] xs:hidden lg:inline ${dark ? 'dark' : 'light'}`}>Sidebar</div>
+  return (
+    <div
+      className={`w-[270px] border-r border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800 xs:hidden lg:inline`}
+    >
+      <div className='sticky top-14'>
+        <Menu />
+      </div>
+    </div>
+  )
 }
 
 export default Sidebar

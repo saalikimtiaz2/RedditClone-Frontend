@@ -5,6 +5,17 @@
 @tailwind components;
 @tailwind utilities;
 
+h6 {
+  @apply text-[10px] font-medium uppercase;
+}
+
+.sidebar-btn {
+  @apply flex w-full items-center gap-x-4 px-8 py-2 text-[14px] hover:bg-gray-700;
+  span {
+    font-size: 18px !important;
+  }
+}
+
 .dark {
   @apply bg-gray-800 text-white;
 }
