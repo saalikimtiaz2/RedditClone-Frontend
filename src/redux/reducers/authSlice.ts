@@ -1,4 +1,4 @@
-import { AuthStateInterface } from '@interfaces/authSliceInterfaces'
+import { AuthStateInterface } from '@/interfaces/authSliceInterfaces'
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState: AuthStateInterface = {

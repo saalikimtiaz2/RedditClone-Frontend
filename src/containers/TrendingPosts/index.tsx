@@ -1,5 +1,5 @@
-import TrendingPostCard from '@/components/TrendingPostCard'
-import AllTrendingPosts from '@/data/TrendingPosts'
+import TrendingPostCard from '../../components/TrendingPostCard'
+import AllTrendingPosts from '../../data/TrendingPosts'
 
 function TrendingPosts() {
   return (
