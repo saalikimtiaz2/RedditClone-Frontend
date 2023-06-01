@@ -1,5 +1,5 @@
 import AllTrendingPosts from 'src/data/TrendingPosts'
-import Trending from '../../components/PostCards/Trending'
+import TrendingPostCard from '../../components/TrendingPostCard'
 
 function TrendingPosts() {
   return (
@@ -8,7 +8,7 @@ function TrendingPosts() {
       <div className='grid grid-cols-12 gap-x-4'>
         {AllTrendingPosts.map(trend => (
           <div key={trend.title} className='xs:col-span-12 md:col-span-4 lg:col-span-3'>
-            <Trending {...trend} />
+            <TrendingPostCard {...trend} />
           </div>
         ))}
       </div>
