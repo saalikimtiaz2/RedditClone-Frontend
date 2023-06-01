@@ -4,17 +4,9 @@
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "module": "ESNext",
     "skipLibCheck": true,
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "paths": {
-      "@/*": ["src/*"],
-      "@pages/*": ["src/pages/*"],
-      "@components/*": ["src/components/*"],
-      "@containers/*": ["src/containers/*"],
-      "@interfaces/*": ["src/interfaces/*"],
-      "@hooks/*": ["src/hooks/*"],
-      "@redux/*": ["src/redux/*"],
-      "@data/*": ["src/data/*"],
-      "@styles/*": ["src/styles/*"]
+      "@/*": ["./*"]
     },
 
     /* Bundler mode */
