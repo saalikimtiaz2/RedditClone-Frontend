@@ -1,4 +1,5 @@
 import { BsArrowUpRightCircleFill, BsCurrencyBitcoin, BsGraphUpArrow } from 'react-icons/bs'
+import { FiMoreHorizontal } from 'react-icons/fi'
 import { IoGameControllerOutline } from 'react-icons/io5'
 import { LuStars } from 'react-icons/lu'
 import { MdOutlineSportsBaseball } from 'react-icons/md'
@@ -48,5 +49,10 @@ export const Topics = [
     label: 'Celebrity',
     link: '/',
     icon: <LuStars />,
+  },
+  {
+    label: 'More Topics',
+    link: '/',
+    icon: <FiMoreHorizontal />,
   },
 ]
