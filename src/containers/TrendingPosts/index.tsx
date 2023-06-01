@@ -1,4 +1,4 @@
-import TrendingPostCard from '../../components/TrendingPostCard'
+import TrendingPostCard from 'src/components/TrendingPostCard'
 import AllTrendingPosts from '../../data/TrendingPosts'
 
 function TrendingPosts() {
