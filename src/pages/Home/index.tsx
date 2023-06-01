@@ -1,5 +1,5 @@
-import TrendingPosts from 'src/containers/TrendingPosts'
-import Layout from '../../components/Layout'
+import Layout from 'components/Layout'
+import TrendingPosts from 'containers/TrendingPosts'
 
 function Home() {
   return (

@@ -1,4 +1,4 @@
-import { TrendingPostInterface } from 'src/interfaces/trendingPostsInterface'
+import { TrendingPostInterface } from 'interfaces/trendingPostsInterface'
 
 const TrendingPosts: TrendingPostInterface[] = [
   {

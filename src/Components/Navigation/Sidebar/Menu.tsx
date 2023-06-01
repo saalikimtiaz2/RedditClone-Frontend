@@ -1,4 +1,4 @@
-import { Feeds, Topics } from '../Navlinks'
+import { Feeds, Topics } from 'components/Navigation/Navlinks'
 
 function MainMenu() {
   return (
