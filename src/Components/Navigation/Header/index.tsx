@@ -1,4 +1,3 @@
-import { Menu } from '@headlessui/react'
 import { BsChevronDown, BsFillArrowUpRightCircleFill, BsQrCodeScan, BsReddit, BsSearch } from 'react-icons/bs'
 import ThemeSwitcher from 'src/components/ThemeSwitcher'
 import { colors } from 'src/styles/colors'
@@ -17,28 +16,17 @@ function Header() {
         <button className='btn btn-sm'>
           <BsFillArrowUpRightCircleFill /> <BsChevronDown />
         </button>
-        <Menu>
-          <Menu.Button>More</Menu.Button>
-          <Menu.Items>
-            <Menu.Item>
-              {({ active }) => (
-                <a className={`${active && 'bg-blue-500'}`} href='/account-settings'>
-                  Documentation
-                </a>
-              )}
-            </Menu.Item>
-            <Menu.Item disabled>
-              <span className='opacity-75'>Invite a friend (coming soon!)</span>
-            </Menu.Item>
-          </Menu.Items>
-        </Menu>
       </div>
 
       <div
-        className={`flex items-center overflow-hidden rounded-full border border-gray-500 dark:bg-gray-700 dark:hover:bg-gray-800 xs:pl-2 md:grow lg:pl-4 `}
+        className={`flex items-center overflow-hidden rounded-full border border-gray-500 dark:bg-gray-700 dark:hover:border-gray-200 dark:hover:bg-gray-800 xs:pl-2 md:w-2/5  lg:pl-4 `}
       >
         <BsSearch />
-        <input type='text' className='grow bg-transparent py-2 outline-none xs:px-2 xs:text-xs lg:px-4 lg:text-base' />
+        <input
+          placeholder='Search Reddit'
+          type='text'
+          className='grow bg-transparent py-2 outline-none  xs:px-2 xs:text-xs lg:px-4 lg:text-base'
+        />
       </div>
 
       <div className='items-center gap-x-4 xs:hidden md:flex'>
@@ -46,12 +34,12 @@ function Header() {
           <BsQrCodeScan /> Get The App
         </button>
         <button className='btn btn-primary rounded-full'>Login</button>
-      </div>
-      {/* <button className='btn btn-sm rounded-lg border border-gray-400'>
+        {/* <button className='btn btn-sm rounded-lg border border-gray-400'>
         <AiOutlineUser />
         <BsChevronDown />
       </button> */}
-      <ThemeSwitcher />
+        <ThemeSwitcher />
+      </div>
     </nav>
   )
 }

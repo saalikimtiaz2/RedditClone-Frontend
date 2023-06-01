@@ -3,7 +3,7 @@ import Menu from './Menu'
 function Sidebar() {
   return (
     <div
-      className={`sidebar z-50 w-[270px] shrink-0 border-r border-gray-200 bg-white shadow-2xl dark:border-gray-700 dark:bg-gray-800  xs:hidden lg:inline`}
+      className={`sidebar w-[270px] shrink-0 border-r border-gray-200 bg-white shadow-2xl dark:border-gray-700 dark:bg-gray-800  xs:hidden lg:inline`}
     >
       <div className='sticky top-14'>
         <Menu />
