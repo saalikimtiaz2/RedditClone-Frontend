@@ -5,19 +5,9 @@ import { LuStars } from 'react-icons/lu'
 import { MdOutlineSportsBaseball } from 'react-icons/md'
 import { SlScreenDesktop } from 'react-icons/sl'
 import { VscHome } from 'react-icons/vsc'
+import { feedsInterface, topicsInterface } from '../../../interfaces/menuInterfaces'
 
-type feedsTypes = {
-  label: string
-  link: string
-  icon: React.ReactNode
-}
-type topicsTypes = {
-  label: string
-  link: string
-  icon: React.ReactNode
-}
-
-export const Feeds: feedsTypes[] = [
+export const Feeds: feedsInterface[] = [
   {
     label: 'Home',
     link: '/',
@@ -30,7 +20,7 @@ export const Feeds: feedsTypes[] = [
   },
 ]
 
-export const Topics: topicsTypes[] = [
+export const Topics: topicsInterface[] = [
   {
     label: 'Gaming',
     link: '/',
