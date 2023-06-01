@@ -1,14 +1,13 @@
-import Layout from 'src/Components/Layout'
+import Layout from 'src/components/Layout'
+import TrendingPosts from 'src/containers/TrendingPosts'
 
 function Home() {
   return (
     <Layout>
-      <div className='relative flex h-screen flex-col items-center justify-center'>
-        <h1 className='mb-4 text-5xl font-bold text-white'>Reddit Clone</h1>
-        <p className='text-3xl text-white'>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, sed?
-        </p>
-        <button className='mt-8 rounded bg-white px-4 py-2 text-gray-800 hover:bg-gray-200'>Get Started ❤️</button>
+      <div className='h-screen'>
+        <div className='xs:px-4 md:px-10 lg:px-32'>
+          <TrendingPosts />
+        </div>
       </div>
     </Layout>
   )

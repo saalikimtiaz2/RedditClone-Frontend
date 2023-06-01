@@ -1,5 +1,5 @@
-import Header from 'src/Components/Navigation/Header'
-import Sidebar from 'src/Components/Navigation/Sidebar'
+import Header from 'src/components/Navigation/Header'
+import Sidebar from 'src/components/Navigation/Sidebar'
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -7,7 +7,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       <Header />
       <main className='flex'>
         <Sidebar />
-        <div className='bg-grey-300 z-0 grow dark:bg-black'>{children}</div>
+        <div className='bg-grey-300 z-0 dark:bg-black'>{children}</div>
       </main>
     </>
   )

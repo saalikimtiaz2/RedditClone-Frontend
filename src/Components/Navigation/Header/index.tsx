@@ -1,12 +1,12 @@
 import { Menu } from '@headlessui/react'
 import { BsChevronDown, BsFillArrowUpRightCircleFill, BsQrCodeScan, BsReddit, BsSearch } from 'react-icons/bs'
-import ThemeSwitcher from 'src/Components/ThemeSwitcher'
+import ThemeSwitcher from 'src/components/ThemeSwitcher'
 import { colors } from 'src/styles/colors'
 
 function Header() {
   return (
     <nav
-      className={`sticky top-0 z-50 flex w-full items-center justify-between border-b border-gray-200 bg-white py-1 dark:border-gray-700 dark:bg-gray-800 xs:gap-x-2 xs:px-2 lg:gap-x-6 lg:px-6`}
+      className={`sticky top-0 z-50 flex w-full items-center justify-between border-b border-gray-200 bg-white py-1 shadow-2xl dark:border-gray-700 dark:bg-gray-800 xs:gap-x-2 xs:px-2 lg:gap-x-6 lg:px-6`}
     >
       <button className='flex items-center gap-x-2 text-3xl'>
         <BsReddit color={colors.primary} />

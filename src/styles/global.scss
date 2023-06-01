@@ -1,12 +1,22 @@
 @import './colors';
 @import './buttons.scss';
 
+@import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+* {
+  font-family: 'Arimo', sans-serif;
+}
+
 h6 {
   @apply text-[10px] font-medium uppercase;
+}
+
+.sidebar {
+  width: 270px !important;
 }
 
 .sidebar-btn {
