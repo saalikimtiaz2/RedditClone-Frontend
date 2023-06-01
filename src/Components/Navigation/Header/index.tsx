@@ -1,6 +1,6 @@
 import { BsChevronDown, BsFillArrowUpRightCircleFill, BsQrCodeScan, BsReddit, BsSearch } from 'react-icons/bs'
-import ThemeSwitcher from 'src/components/ThemeSwitcher'
 import { colors } from 'src/styles/colors'
+import ThemeSwitcher from '../../ThemeSwitcher'
 
 function Header() {
   return (

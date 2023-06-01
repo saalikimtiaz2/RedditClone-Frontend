@@ -1,5 +1,5 @@
-import Header from 'src/components/Navigation/Header'
-import Sidebar from 'src/components/Navigation/Sidebar'
+import Header from '../Navigation/Header'
+import Sidebar from '../Navigation/Sidebar'
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (

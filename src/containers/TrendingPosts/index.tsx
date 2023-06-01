@@ -1,5 +1,5 @@
-import Trending from 'src/components/PostCards/Trending'
 import AllTrendingPosts from 'src/data/TrendingPosts'
+import Trending from '../../components/PostCards/Trending'
 
 function TrendingPosts() {
   return (
