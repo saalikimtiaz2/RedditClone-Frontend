@@ -18,8 +18,8 @@ function TrendingPosts() {
   }, [])
 
   return (
-    <>
-      <h3 className='mt-4 pb-2 text-sm font-semibold text-gray-800 dark:text-gray-200'>Trending today</h3>
+    <div className='pt-4'>
+      <h3 className='pb-2  text-sm font-semibold text-gray-800 dark:text-gray-200'>Trending today</h3>
       {numberToMap === 0 ? (
         <div>Loading</div>
       ) : (
@@ -31,7 +31,7 @@ function TrendingPosts() {
           ))}
         </div>
       )}
-    </>
+    </div>
   )
 }
 
