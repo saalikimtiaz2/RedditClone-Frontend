@@ -14,6 +14,44 @@
 h6 {
   @apply text-[10px] font-medium uppercase;
 }
+.auth-form {
+  input {
+    font-size: 14px !important;
+    @apply mb-4 w-full rounded-full border border-gray-200 bg-gray-200 bg-opacity-50 px-4
+      pb-1 pt-4 outline-none transition-all duration-300 ease-in-out;
+    &:hover,
+    &:focus {
+      @apply border-gray-700;
+    }
+  }
+  input:hover + .floating-label,
+  input:focus + .floating-label,
+  input:not(:valid) + .floating-label {
+    top: 4px;
+    font-size: 12px;
+    font-weight: 300;
+    opacity: 1;
+  }
+
+  .floating-label {
+    position: absolute;
+    font-size: 14px;
+    pointer-events: none;
+    left: 18px;
+    top: 20%;
+    font-weight: 500;
+    @apply text-gray-500;
+    transition: 0.2s ease all;
+  }
+}
+
+.overlay {
+  &::after {
+    content: '';
+    @apply absolute bottom-0 left-0 right-0 top-0 h-full w-full bg-gradient-to-t from-black from-10% to-transparent;
+    z-index: 100 !important;
+  }
+}
 
 .dark {
   @apply bg-gray-800 text-white;
