@@ -8,7 +8,7 @@ import { BsChevronDown, BsFillArrowUpRightCircleFill, BsQrCodeScan, BsReddit, Bs
 import { colors } from 'styles/colors'
 
 function Header() {
-  const [isDialogOpen, setIsDialogOpen] = useState<boolean>(true)
+  const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false)
   const [isSignup, setIsSignup] = useState<boolean>(false)
 
   const toggleModal = () => {

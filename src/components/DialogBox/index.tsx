@@ -41,7 +41,10 @@ const DialogBox = ({
                 leaveTo='opacity-0 scale-95'
               >
                 <Dialog.Panel className='relative w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle text-black shadow-xl transition-all'>
-                  <button onClick={closeModal} className='absolute right-6 top-6 z-50 text-xl text-gray-500'>
+                  <button
+                    onClick={closeModal}
+                    className='absolute right-6 top-6 z-50 text-xl text-gray-500 outline-none'
+                  >
                     <MdClose />
                   </button>
                   <Dialog.Title as='h3' className='text-lg font-medium leading-6 text-gray-800'>
