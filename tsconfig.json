@@ -5,7 +5,18 @@
     "module": "ESNext",
     "skipLibCheck": true,
     "baseUrl": ".",
-    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "src/*": ["./src/*"],
+      "components/*": ["./src/components/*"],
+      "containers/*": ["./src/containers/*"],
+      "data/*": ["./src/data/*"],
+      "hooks/*": ["./src/hooks/*"],
+      "interfaces/*": ["./src/interfaces/*"],
+      "pages/*": ["./src/pages/*"],
+      "redux/*": ["./src/redux/*"],
+      "routers/*": ["./src/routers/*"],
+      "styles/*": ["./src/styles/*"]
+    },
 
     /* Bundler mode */
     "moduleResolution": "bundler",

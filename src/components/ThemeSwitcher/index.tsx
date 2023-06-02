@@ -1,6 +1,6 @@
+import useDarkSide from 'hooks/Themes/useDarkSide'
 import { useState } from 'react'
 import { DarkModeSwitch } from 'react-toggle-dark-mode'
-import useDarkSide from '../../hooks/Themes/useDarkSide'
 
 const ThemeSwitcher = () => {
   const [colorTheme, setTheme] = useDarkSide()

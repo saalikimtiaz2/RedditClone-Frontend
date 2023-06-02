@@ -1,5 +1,5 @@
+import { TrendingPostInterface } from 'interfaces/trendingPostsInterface'
 import { FC } from 'react'
-import { TrendingPostInterface } from '../../interfaces/trendingPostsInterface'
 
 const TrendingCard: FC<TrendingPostInterface> = ({ imageUrl, title, subtitle, category }) => {
   return (

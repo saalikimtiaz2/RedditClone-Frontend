@@ -1,5 +1,5 @@
-import { feedsInterface, topicsInterface } from '../../../interfaces/menuInterfaces'
-import { Feeds, Topics } from '../../Navigation/Navlinks'
+import { Feeds, Topics } from 'components/Navigation/Navlinks'
+import { feedsInterface, topicsInterface } from 'interfaces/menuInterfaces'
 
 function MainMenu() {
   return (

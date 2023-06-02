@@ -29,11 +29,13 @@ function Header() {
         />
       </div>
 
-      <div className='items-center gap-x-4 xs:hidden md:flex'>
-        <button className='btn btn-gray rounded-full'>
-          <BsQrCodeScan /> Get The App
-        </button>
-        <button className='btn btn-primary rounded-full'>Login</button>
+      <div className='flex items-center gap-x-4'>
+        <div className='gap-x- items-center xs:hidden md:flex'>
+          <button className='btn btn-gray rounded-full'>
+            <BsQrCodeScan /> Get The App
+          </button>
+          <button className='btn btn-primary rounded-full'>Login</button>
+        </div>
         {/* <button className='btn btn-sm rounded-lg border border-gray-400'>
         <AiOutlineUser />
         <BsChevronDown />
