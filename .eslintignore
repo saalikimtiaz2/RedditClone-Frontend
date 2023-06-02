@@ -1,0 +1,6 @@
+.next/
+lib/
+node_modules/
+storybook-static/
+texts-generated.json
+.eslintrc.cjs

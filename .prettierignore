@@ -1,0 +1,4 @@
+.next/
+lib/
+storybook-static/
+texts-generated.json
