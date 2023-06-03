@@ -16,7 +16,7 @@ export default function Example() {
   return (
     <>
       <div className='overflow-hidden rounded border-x border-b border-gray-200 bg-white dark:border-gray-600 dark:bg-gray-700'>
-        {[list].map((item: any, idx) => (
+        {[...list, ...list, ...list, ...list].map((item: any, idx) => (
           <Disclosure key={idx}>
             {({ open }) => (
               <>

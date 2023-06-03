@@ -11,11 +11,7 @@ const ThemeSwitcher = () => {
     setDarkSide(checked)
   }
 
-  return (
-    <>
-      <DarkModeSwitch checked={darkSide} onChange={toggleDarkMode} size={20} />
-    </>
-  )
+  return <DarkModeSwitch checked={darkSide} onChange={toggleDarkMode} size={20} />
 }
 
 export default ThemeSwitcher

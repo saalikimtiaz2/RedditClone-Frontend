@@ -1,6 +1,6 @@
 import { Menu, Transition } from '@headlessui/react'
 import DialogBox from 'components/DialogBox'
-import { Feeds, Topics } from 'components/Navigation/Navlinks'
+import { Feeds, Topics, navList } from 'components/Navigation/Navlinks'
 import ThemeSwitcher from 'components/ThemeSwitcher'
 import LoginForm from 'containers/Forms/Login'
 import SignupForm from 'containers/Forms/Signup'
@@ -8,6 +8,7 @@ import { feedsInterface, topicsInterface } from 'interfaces/menuInterfaces'
 import { Fragment, useState } from 'react'
 import { AiOutlineUser } from 'react-icons/ai'
 import { BsChevronDown, BsFillArrowUpRightCircleFill, BsQrCodeScan, BsReddit, BsSearch } from 'react-icons/bs'
+import { FiLogOut } from 'react-icons/fi'
 import { colors } from 'styles/colors'
 
 function Header() {
@@ -123,9 +124,56 @@ function Header() {
         <BsChevronDown />
       </button> */}
           <ThemeSwitcher />
-          <button className='btn-sm rounded-lg border border-gray-400 xs:inline md:hidden' onClick={toggleModal}>
-            <AiOutlineUser />
-          </button>
+          <div className='relative'>
+            <Menu as='div' className='relative inline-block text-left'>
+              <Menu.Button className='flex items-center gap-x-4 rounded-lg border border-gray-100 px-4 py-3 dark:border-gray-700'>
+                <AiOutlineUser />
+              </Menu.Button>
+              <Transition
+                as={Fragment}
+                enter='transition ease-out duration-100'
+                enterFrom='transform opacity-0 scale-95'
+                enterTo='transform opacity-100 scale-100'
+                leave='transition ease-in duration-75'
+                leaveFrom='transform opacity-100 scale-100'
+                leaveTo='transform opacity-0 scale-95'
+              >
+                <Menu.Items className='absolute right-0 top-6 z-50 mt-2 w-56 origin-top-right overflow-hidden border-x border-b border-gray-100 bg-white  ring-1 ring-black ring-opacity-5 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white'>
+                  {navList.map((item: feedsInterface) => (
+                    <Menu.Item key={item.label}>
+                      {({ active }) => (
+                        <button
+                          className={`${
+                            active
+                              ? 'bg-gray-200 dark:bg-gray-700'
+                              : 'bg-white text-black dark:bg-gray-800 dark:text-white'
+                          } group flex w-full items-center gap-x-4 px-8 py-2 text-sm`}
+                        >
+                          <span className='text-xl'>{item.icon}</span> {item.label}
+                        </button>
+                      )}
+                    </Menu.Item>
+                  ))}
+                  <div className='mx-6 border-b border-gray-200 dark:border-gray-600' />
+                  <Menu.Item>
+                    {({ active }) => (
+                      <button
+                        className={`${
+                          active
+                            ? 'bg-gray-200 dark:bg-gray-700'
+                            : 'bg-white text-black dark:bg-gray-800 dark:text-white'
+                        } group flex w-full items-center gap-x-4 px-8 py-2 text-sm`}
+                        onClick={toggleModal}
+                      >
+                        <FiLogOut className='3xl' />
+                        Login/Signup
+                      </button>
+                    )}
+                  </Menu.Item>
+                </Menu.Items>
+              </Transition>
+            </Menu>
+          </div>
         </div>
       </nav>
     </>

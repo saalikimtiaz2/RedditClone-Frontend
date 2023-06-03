@@ -1,58 +1,95 @@
+import { postInterface } from 'interfaces/postInterfaces'
+import { FC } from 'react'
 import { BiComment } from 'react-icons/bi'
 import { BsBookmark } from 'react-icons/bs'
 import { FiMoreHorizontal } from 'react-icons/fi'
 import { TbArrowBigDown, TbArrowBigUp, TbArrowRampRight2 } from 'react-icons/tb'
+import { useNavigate } from 'react-router-dom'
 
-function PostCard() {
+const PostCard: FC<postInterface> = ({
+  id,
+  imageUrl,
+  title,
+  subtitle,
+  category,
+  user,
+  postTime,
+  likes,
+  categoryImage,
+}) => {
+  const navitgate = useNavigate()
+
   return (
-    <div className='mb-4 flex rounded border border-gray-100 bg-white hover:border-gray-200 dark:border-gray-600 dark:bg-gray-800 hover:dark:border-gray-500 xs:flex-col-reverse md:flex-row'>
-      <div className='flex h-full gap-2 bg-gray-200 p-2 dark:bg-gray-800 xs:flex-row xs:items-center xs:justify-center md:flex-col md:items-start md:justify-start'>
-        <button className='h-6 w-6 text-gray-500 hover:bg-gray-100 hover:text-primary hover:dark:bg-gray-700'>
+    <div
+      onClick={() => navitgate(`/post/${id}`)}
+      className='mb-4 flex cursor-pointer overflow-hidden rounded border border-gray-200 bg-gray-200 shadow-xl hover:border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:shadow-gray-800 hover:dark:border-gray-500 xs:flex-col-reverse md:flex-row'
+    >
+      <div className='flex h-full items-center gap-2 bg-gray-200 p-2 dark:bg-gray-800 xs:flex-row md:flex-col '>
+        <button
+          onClick={evt => evt.stopPropagation()}
+          className='h-6 w-6 text-gray-500 hover:bg-gray-100 hover:text-primary hover:dark:bg-gray-700'
+        >
           <TbArrowBigUp className='text-2xl' />
         </button>
-        <p className='w-max text-center text-[10px] font-semibold'>48.5k</p>
-        <button className='h-6 w-6 text-gray-500 hover:bg-gray-100 hover:text-secondary hover:dark:bg-gray-700'>
+        <p className='w-max text-center text-[10px] font-semibold'>{likes}k</p>
+        <button
+          onClick={evt => evt.stopPropagation()}
+          className='h-6 w-6 text-gray-500 hover:bg-gray-100 hover:text-secondary hover:dark:bg-gray-700'
+        >
           <TbArrowBigDown className='text-2xl' />
         </button>
       </div>
-      <div className='grow bg-gray-700'>
+      <div className='grow bg-white dark:bg-gray-700'>
         <div className='p-2'>
           <div className='flex justify-between'>
             <div className='flex items-center gap-x-2'>
-              <img
-                src='https://i0.wp.com/mvslim.com/wp-content/uploads/2017/08/the-shah-faisal-mosque-islamabad-80985.jpg?w=610&ssl=1'
-                alt=''
-                className='h-6 w-6 rounded-full object-cover object-center'
-              />
+              <img src={categoryImage} alt='' className='h-6 w-6 rounded-full object-cover object-center' />
               <p className='text-sm'>
-                r/islamabad. <span className='text-[10px] text-gray-500'>Posted by u/salik.imtiaz 6 hours ago</span>
+                {category}.{' '}
+                <span className='text-[10px] text-gray-500'>
+                  Posted by {user} {postTime}
+                </span>
               </p>
             </div>
-            <button className='btn btn-sm rounded-full bg-secondary text-xs'>Join</button>
+            <button
+              onClick={evt => evt.stopPropagation()}
+              className='btn btn-sm rounded-full bg-secondary text-xs font-semibold text-white'
+            >
+              Join
+            </button>
           </div>
-          <p className='mt-2'>Questions raised over top leaders quitting Imran Khan&apos;s party.</p>
+          <p className='mt-2'>{title}</p>
+          <p>{subtitle}</p>
         </div>
         <div className='post-canvas'>
-          <img
-            src='https://www.aljazeera.com/wp-content/uploads/2023/05/2023-05-12T145627Z_1326663711_RC2ZW0AFPLL5_RTRMADP_3_PAKISTAN-POLITICS-KHAN-1684295414.jpg?resize=770%2C513&quality=80'
-            className='h-full w-full object-contain'
-            alt=''
-          />
+          <img src={imageUrl} className='h-full w-full object-contain' alt='' />
         </div>
         <div className='flex items-center'>
-          <button className='btn btn-xs text-gray-500 hover:bg-gray-100 hover:dark:bg-gray-600'>
+          <button
+            onClick={evt => evt.stopPropagation()}
+            className='btn btn-xs text-gray-500 hover:bg-gray-100 hover:dark:bg-gray-600'
+          >
             <BiComment className='text-xl' />
             Comment
           </button>
-          <button className='btn btn-xs text-gray-500 hover:bg-gray-100 hover:dark:bg-gray-600'>
+          <button
+            onClick={evt => evt.stopPropagation()}
+            className='btn btn-xs text-gray-500 hover:bg-gray-100 hover:dark:bg-gray-600'
+          >
             <TbArrowRampRight2 className='text-xl' />
             Share
           </button>
-          <button className='btn btn-xs text-gray-500 hover:bg-gray-100 hover:dark:bg-gray-600'>
+          <button
+            onClick={evt => evt.stopPropagation()}
+            className='btn btn-xs text-gray-500 hover:bg-gray-100 hover:dark:bg-gray-600'
+          >
             <BsBookmark className='text-xl' />
             Save
           </button>
-          <button className='btn btn-xs text-gray-500 hover:bg-gray-100 hover:dark:bg-gray-600'>
+          <button
+            onClick={evt => evt.stopPropagation()}
+            className='btn btn-xs text-gray-500 hover:bg-gray-100 hover:dark:bg-gray-600'
+          >
             <FiMoreHorizontal className='text-xl' />
           </button>
         </div>

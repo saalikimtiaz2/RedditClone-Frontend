@@ -2,6 +2,8 @@ import Collapseable from 'components/Collapseable'
 import Layout from 'components/Layout'
 import PostCard from 'components/PostCard'
 import TrendingPosts from 'containers/TrendingPosts'
+import AllPosts from 'data/PostCardData'
+import { postInterface } from 'interfaces/postInterfaces'
 import { BsChevronDown, BsFire } from 'react-icons/bs'
 import { CgAlignTop } from 'react-icons/cg'
 import { FiMoreHorizontal } from 'react-icons/fi'
@@ -53,16 +55,15 @@ function Home() {
                   <TbSection />
                 </button>
               </div>
-              <PostCard />
-              <PostCard />
-              <PostCard />
-              <PostCard />
-              <PostCard />
-              <PostCard />
+              {AllPosts.map((post: postInterface) => (
+                <PostCard key={post.id} {...post} />
+              ))}
             </div>
             <div className='xs:col-span-12 xs:px-2 md:col-span-4 md:px-0'>
               <Collapseable />
-              <div className='stickt top-16 px-4 pt-10 text-center text-[10px] text-gray-500'>
+              <div className='sticky top-16 px-4 pt-10 text-center text-[10px] text-gray-500'>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas, dolorem?
+                <div className='my-2 h-1 border-t border-gray-500' />
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero voluptatem voluptatibus quam alias
                 consequatur consectetur amet aliquam maxime quas culpa, sunt, numquam magni? Neque tempora dicta eaque
                 iure, hic illo!
