@@ -53,6 +53,10 @@ h6 {
   }
 }
 
+.post-canvas {
+  @apply xs:h-[220px] md:h-[300px];
+}
+
 .dark {
   @apply bg-gray-800 text-white;
 }
