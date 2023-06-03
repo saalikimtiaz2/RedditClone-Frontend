@@ -12,12 +12,12 @@ import { FiLogOut } from 'react-icons/fi'
 import { colors } from 'styles/colors'
 
 function Header() {
-  const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false)
+  const [isAuthDialogOpen, setIsAuthDialogOpen] = useState<boolean>(false)
   const [isQrDialogOpen, setIsQrDialogOpen] = useState<boolean>(false)
   const [isSignup, setIsSignup] = useState<boolean>(false)
 
   const toggleModal = () => {
-    setIsDialogOpen(prevState => !prevState)
+    setIsAuthDialogOpen(prevState => !prevState)
     setIsSignup(false)
   }
   const toggleForm = () => {
@@ -29,7 +29,7 @@ function Header() {
 
   return (
     <>
-      <DialogBox isOpen={isDialogOpen} closeModal={toggleModal}>
+      <DialogBox isOpen={isAuthDialogOpen} closeModal={toggleModal}>
         <img
           src='https://www.redditinc.com/assets/images/site/reddit-logo.png'
           className='absolute -right-10 -top-10 z-0 h-[350px] rotate-45 opacity-5'

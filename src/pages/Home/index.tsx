@@ -39,19 +39,19 @@ function Home() {
                   </button>
 
                   <div className='items-center gap-x-2 xs:hidden md:flex'>
-                    <button className='btn btn-sm rounded-full text-gray-500 hover:bg-gray-600'>
+                    <button className='btn btn-sm rounded-full text-gray-500 hover:bg-gray-100 hover:dark:bg-gray-600'>
                       <MdOutlineNewReleases className='rotate-180 text-xl' />
                       New
                     </button>
-                    <button className='btn btn-sm rounded-full text-gray-500 hover:bg-gray-600'>
+                    <button className='btn btn-sm rounded-full text-gray-500 hover:bg-gray-100 hover:dark:bg-gray-600'>
                       <CgAlignTop className='rotate-180 text-xl' /> Top
                     </button>
-                    <button className='rounded-full p-2 text-xl text-gray-500 hover:bg-gray-600'>
+                    <button className='rounded-full p-2 text-xl text-gray-500 hover:bg-gray-100 hover:dark:bg-gray-600'>
                       <FiMoreHorizontal />
                     </button>
                   </div>
                 </div>
-                <button className='rounded-full p-2 text-xl text-gray-500 hover:bg-gray-600'>
+                <button className='rounded-full p-2 text-xl text-gray-500 hover:bg-gray-100 hover:dark:bg-gray-600'>
                   <TbSection />
                 </button>
               </div>
