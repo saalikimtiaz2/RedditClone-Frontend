@@ -13,6 +13,7 @@ import { colors } from 'styles/colors'
 
 function Header() {
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false)
+  const [isQrDialogOpen, setIsQrDialogOpen] = useState<boolean>(false)
   const [isSignup, setIsSignup] = useState<boolean>(false)
 
   const toggleModal = () => {
@@ -21,6 +22,9 @@ function Header() {
   }
   const toggleForm = () => {
     setIsSignup(prevState => !prevState)
+  }
+  const toggleQrOpen = () => {
+    setIsQrDialogOpen(prevState => !prevState)
   }
 
   return (
@@ -36,6 +40,18 @@ function Header() {
           <button className='ml-1 text-sm text-secondary' onClick={toggleForm}>
             {isSignup ? 'Login' : 'Signup'}
           </button>
+        </div>
+      </DialogBox>
+      <DialogBox isOpen={isQrDialogOpen} closeModal={toggleQrOpen}>
+        <img
+          src='https://www.redditinc.com/assets/images/site/reddit-logo.png'
+          className='absolute -right-10 -top-10 z-0 h-[350px] rotate-45 opacity-5'
+        />
+
+        <h1 className='text-2xl font-medium'>Scan QR</h1>
+        <p className='text-gray-500'>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        <div className='py-14'>
+          <img src='/images/qrcode.png' className='mx-auto w-4/5' alt='' />
         </div>
       </DialogBox>
 
@@ -112,7 +128,7 @@ function Header() {
 
         <div className='flex items-center gap-x-4'>
           <div className='items-center gap-x-4 xs:hidden md:flex'>
-            <button className='btn btn-gray rounded-full'>
+            <button className='btn btn-gray rounded-full' onClick={toggleQrOpen}>
               <BsQrCodeScan /> Get The App
             </button>
             <button className='btn btn-primary rounded-full' onClick={toggleModal}>
