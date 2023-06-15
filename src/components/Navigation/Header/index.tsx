@@ -4,22 +4,30 @@ import { Feeds, Topics, navList } from 'components/Navigation/Navlinks'
 import ThemeSwitcher from 'components/ThemeSwitcher'
 import LoginForm from 'containers/Forms/Login'
 import SignupForm from 'containers/Forms/Signup'
+import { useAppDispatch, useAppSelector } from 'hooks/useTypedSelector'
 import { feedsInterface, topicsInterface } from 'interfaces/menuInterfaces'
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { AiOutlineUser } from 'react-icons/ai'
 import { BsChevronDown, BsFillArrowUpRightCircleFill, BsQrCodeScan, BsReddit, BsSearch } from 'react-icons/bs'
 import { FiLogOut } from 'react-icons/fi'
+import { closeLoginModal, openLoginModal } from 'redux/reducers/loginModalSlice'
 import { colors } from 'styles/colors'
 
 function Header() {
-  const [isAuthDialogOpen, setIsAuthDialogOpen] = useState<boolean>(false)
+  const { isLoginModalOpen, isSignupModal } = useAppSelector(state => state.loginModalSlice)
+  const dispatch = useAppDispatch()
+
   const [isQrDialogOpen, setIsQrDialogOpen] = useState<boolean>(false)
   const [isSignup, setIsSignup] = useState<boolean>(false)
 
-  const toggleModal = () => {
-    setIsAuthDialogOpen(prevState => !prevState)
-    setIsSignup(false)
+  const authModalOpen = () => {
+    dispatch(openLoginModal())
   }
+
+  const authModalClose = () => {
+    dispatch(closeLoginModal())
+  }
+
   const toggleForm = () => {
     setIsSignup(prevState => !prevState)
   }
@@ -27,9 +35,18 @@ function Header() {
     setIsQrDialogOpen(prevState => !prevState)
   }
 
+  useEffect(() => {
+    if (!isLoginModalOpen) {
+      setIsSignup(false)
+    }
+    if (isSignupModal) {
+      setIsSignup(true)
+    }
+  }, [isLoginModalOpen, isSignupModal])
+
   return (
     <>
-      <DialogBox isOpen={isAuthDialogOpen} closeModal={toggleModal}>
+      <DialogBox isOpen={isLoginModalOpen} closeModal={authModalClose}>
         <img
           src='https://www.redditinc.com/assets/images/site/reddit-logo.png'
           className='absolute -right-10 -top-10 z-0 h-[350px] rotate-45 opacity-5'
@@ -131,7 +148,7 @@ function Header() {
             <button className='btn btn-gray rounded-full' onClick={toggleQrOpen}>
               <BsQrCodeScan /> Get The App
             </button>
-            <button className='btn btn-primary rounded-full' onClick={toggleModal}>
+            <button className='btn btn-primary rounded-full' onClick={authModalOpen}>
               Login
             </button>
           </div>
@@ -179,7 +196,7 @@ function Header() {
                             ? 'bg-gray-200 dark:bg-gray-700'
                             : 'bg-white text-black dark:bg-gray-800 dark:text-white'
                         } group flex w-full items-center gap-x-4 px-8 py-2 text-sm`}
-                        onClick={toggleModal}
+                        onClick={authModalOpen}
                       >
                         <FiLogOut className='3xl' />
                         Login/Signup

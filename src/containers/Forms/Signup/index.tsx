@@ -1,30 +1,34 @@
-import { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import { signupUser } from '../../../redux/reducers/authSlice'
+// 1) Local Imports
+import { useAppDispatch } from 'hooks/useTypedSelector'
+import { SignupCredentialsInterface } from 'interfaces/authSliceInterfaces'
 
-type SignupCredentials = {
-  name: string
-  email: string
-  password: string
-}
+// 2) Packages Imports
+import { useState } from 'react'
+import { BiArrowBack } from 'react-icons/bi'
+// import { useDispatch } from 'react-redux'
+import { signupUsers } from 'redux/reducers/authSlice'
 
 const Signup = () => {
-  const navigate = useNavigate()
-
-  const [credentials, setCredentials] = useState<SignupCredentials>({
+  const [step, setStep] = useState<'one' | 'two'>('one')
+  const [credentials, setCredentials] = useState<SignupCredentialsInterface>({
     name: '',
     email: '',
     password: '',
+    passwordConfirm: '',
+    username: '',
   })
 
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   const handleUserSignup = () => {
-    if (credentials.email !== '' && credentials.password !== '' && credentials.name !== '') {
-      dispatch(signupUser({ name: credentials.email, email: credentials.email }))
-      navigate('/profile')
+    const authData = {
+      name: credentials.name,
+      email: credentials.email,
+      password: credentials.password,
+      passwordConfirm: credentials.passwordConfirm,
+      username: credentials.username,
     }
+    dispatch(signupUsers(authData))
   }
 
   return (
@@ -35,60 +39,122 @@ const Signup = () => {
           By continuing, you are setting up a Reddit account and agree to our User Agreement and Privacy Policy.
         </p>
         <form className='auth-form'>
-          <div className='relative'>
-            <input
-              type='text'
-              id='name'
-              value={credentials.name}
-              onChange={evt =>
-                setCredentials({
-                  ...credentials,
-                  name: evt.target.value,
-                })
-              }
-            />
-            <span className='floating-label'>Name</span>
-          </div>
-          <div className='relative'>
-            <input
-              type='email'
-              name='email'
-              value={credentials.email}
-              onChange={evt =>
-                setCredentials({
-                  ...credentials,
-                  email: evt.target.value,
-                })
-              }
-            />
-            <span className='floating-label'>Email</span>
-          </div>
-          <div className='relative'>
-            <input
-              type='password'
-              name='password'
-              value={credentials.password}
-              onChange={evt =>
-                setCredentials({
-                  ...credentials,
-                  password: evt.target.value,
-                })
-              }
-            />
-            <span className='floating-label'>Password</span>
-          </div>
-          <div>
-            <button
-              type='submit'
-              onClick={evt => {
-                evt.preventDefault()
-                handleUserSignup()
-              }}
-              className='focus:shadow-outline mt-4 w-full rounded-full bg-primary px-4 py-2 font-bold text-white  focus:outline-none'
-            >
-              Sign Up
-            </button>
-          </div>
+          {step === 'one' ? (
+            <>
+              <div className='relative'>
+                <input
+                  name='username'
+                  value={credentials.username}
+                  onChange={evt =>
+                    setCredentials({
+                      ...credentials,
+                      username: evt.target.value,
+                    })
+                  }
+                />
+                <span className='floating-label'>Username</span>
+              </div>
+              <div className='relative'>
+                <input
+                  name='name'
+                  value={credentials.name}
+                  onChange={evt =>
+                    setCredentials({
+                      ...credentials,
+                      name: evt.target.value,
+                    })
+                  }
+                />
+                <span className='floating-label'>Full Name</span>
+              </div>
+              <div className='relative'>
+                <input
+                  name='email'
+                  value={credentials.email}
+                  onChange={evt =>
+                    setCredentials({
+                      ...credentials,
+                      email: evt.target.value,
+                    })
+                  }
+                />
+                <span className='floating-label'>Email</span>
+              </div>
+              <p className='text-xs text-gray-500'>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, beatae.
+              </p>
+              <div>
+                <button
+                  type='submit'
+                  onClick={evt => {
+                    evt.preventDefault()
+                    setStep('two')
+                  }}
+                  disabled={credentials.username === '' || credentials.name === '' || credentials.email === ''}
+                  className='focus:shadow-outline mt-4 w-full rounded-full bg-primary px-4 py-2 font-bold text-white focus:outline-none  disabled:opacity-50'
+                >
+                  Next
+                </button>
+              </div>
+            </>
+          ) : (
+            <>
+              <button
+                onClick={evt => {
+                  evt.preventDefault()
+                  setStep('one')
+                }}
+                className='btn btn-sm mb-4 rounded-full bg-gray-100 hover:bg-gray-200'
+              >
+                <BiArrowBack /> Back
+              </button>
+              <p className='mb-4 text-xs text-gray-500'>Please set password for your account.</p>
+              <div className='relative'>
+                <input
+                  type='password'
+                  name='password'
+                  value={credentials.password}
+                  onChange={evt =>
+                    setCredentials({
+                      ...credentials,
+                      password: evt.target.value,
+                    })
+                  }
+                />
+                <span className='floating-label'>Password</span>
+              </div>
+              <div className='relative'>
+                <input
+                  type='password'
+                  name='password'
+                  value={credentials.passwordConfirm}
+                  onChange={evt =>
+                    setCredentials({
+                      ...credentials,
+                      passwordConfirm: evt.target.value,
+                    })
+                  }
+                />
+                <span className='floating-label'>Confirm Password</span>
+              </div>
+              <p className='text-xs text-gray-500'>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, beatae.
+              </p>
+              <div>
+                <button
+                  type='submit'
+                  onClick={evt => {
+                    evt.preventDefault()
+                    handleUserSignup()
+                  }}
+                  disabled={credentials.passwordConfirm === '' || credentials.password === ''}
+                  className='focus:shadow-outline mt-4 w-full rounded-full bg-primary px-4 py-2 font-bold text-white focus:outline-none  disabled:opacity-50'
+                >
+                  Sign Up
+                </button>
+              </div>
+            </>
+          )}
         </form>
       </div>
     </>

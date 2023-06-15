@@ -5,6 +5,8 @@ import { BsBookmark } from 'react-icons/bs'
 import { FiMoreHorizontal } from 'react-icons/fi'
 import { TbArrowBigDown, TbArrowBigUp, TbArrowRampRight2 } from 'react-icons/tb'
 import { useNavigate } from 'react-router-dom'
+import { openSignupModal } from 'redux/reducers/loginModalSlice'
+import { useAppDispatch } from 'redux/store'
 
 const PostCard: FC<postInterface> = ({
   id,
@@ -18,6 +20,7 @@ const PostCard: FC<postInterface> = ({
   categoryImage,
 }) => {
   const navitgate = useNavigate()
+  const dispatch = useAppDispatch()
 
   return (
     <div
@@ -52,7 +55,10 @@ const PostCard: FC<postInterface> = ({
               </p>
             </div>
             <button
-              onClick={evt => evt.stopPropagation()}
+              onClick={evt => {
+                evt.stopPropagation()
+                dispatch(openSignupModal())
+              }}
               className='btn btn-sm rounded-full bg-secondary text-xs font-semibold text-white'
             >
               Join

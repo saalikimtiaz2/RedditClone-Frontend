@@ -20,8 +20,8 @@ const LoginForm = () => {
 
   const handleUserLogin = () => {
     if (credentials.email !== '' && credentials.password !== '') {
-      dispatch(loginUser({ name: '', email: credentials.email }))
-      navigate('/profile')
+      dispatch(loginUser({ password: credentials.password, email: credentials.email }))
+      // navigate('/profile')
     }
   }
 
@@ -35,7 +35,6 @@ const LoginForm = () => {
         <form className='auth-form'>
           <div className='relative'>
             <input
-              type='email'
               name='email'
               value={credentials.email}
               onChange={evt =>
@@ -45,13 +44,12 @@ const LoginForm = () => {
                 })
               }
             />
-            <label className='floating-label'>Username</label>
+            <label className='floating-label'>Username or Email</label>
           </div>
-
           <div className='relative'>
             <input
-              type='password'
               name='password'
+              type='password'
               value={credentials.password}
               onChange={evt =>
                 setCredentials({
@@ -60,11 +58,9 @@ const LoginForm = () => {
                 })
               }
             />
-            <span className='floating-label'>Password</span>
+            <label className='floating-label'>Password</label>
           </div>
-
           <p className='mb-4 text-xs'>Forgot your username or password?</p>
-
           <div>
             <button
               type='submit'
