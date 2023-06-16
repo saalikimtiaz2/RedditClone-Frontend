@@ -1,8 +1,8 @@
 import { SignupCredentialsInterface } from 'interfaces/authSliceInterfaces'
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useAppDispatch } from 'hooks/useTypedSelector'
 import { useNavigate } from 'react-router-dom'
-// import { signupUsers } from 'redux/reducers/authSlice'
+import { signupUsers } from 'redux/reducers/authSlice'
 
 const Signup = () => {
   const navigate = useNavigate()
@@ -15,7 +15,7 @@ const Signup = () => {
     username: '',
   })
 
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   const handleUserSignup = () => {
     const authData = {
@@ -27,7 +27,7 @@ const Signup = () => {
     }
 
     if (credentials.email !== '' && credentials.password !== '' && credentials.name !== '') {
-      // dispatch(signupUsers(authData))
+      dispatch(signupUsers(authData))
       navigate('/profile')
     }
   }
