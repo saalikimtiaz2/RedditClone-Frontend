@@ -21,7 +21,7 @@ const LoginForm = () => {
   const handleUserLogin = () => {
     if (credentials.email !== '' && credentials.password !== '') {
       dispatch(loginUser({ password: credentials.password, email: credentials.email }))
-      // navigate('/profile')
+      navigate('/profile')
     }
   }
 
