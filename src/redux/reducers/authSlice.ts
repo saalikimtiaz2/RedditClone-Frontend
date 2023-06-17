@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 import { AuthStateInterface, SignupCredentialsInterface, userData } from 'interfaces/authSliceInterfaces'
 
@@ -7,6 +7,7 @@ const BASE_URL = import.meta.env.VITE_APP_API
 const initialState: AuthStateInterface = {
   isAuth: false,
   loading: false,
+  success: false,
   error: null,
   data: null,
 }
@@ -14,12 +15,11 @@ const initialState: AuthStateInterface = {
 // -------------Signing up users --------------------
 
 export const signupUsers = createAsyncThunk('user/signup', async (data: SignupCredentialsInterface, thunkAPI: any) => {
-  console.log(data)
   try {
     const res = await axios.post<userData>(`${BASE_URL}users/signup`, data)
     return res.data
   } catch (err: any) {
-    return thunkAPI.rejectWithValue({ error: err.message })
+    return thunkAPI.rejectWithValue({ ...err.response })
   }
 })
 
@@ -28,6 +28,7 @@ export const signupUsers = createAsyncThunk('user/signup', async (data: SignupCr
 const authSlice = createSlice({
   name: 'authUser',
   initialState,
+
   reducers: {
     loginUser(state, action) {
       state.data = action.payload
@@ -39,21 +40,27 @@ const authSlice = createSlice({
       state.loading = false
       state.error = null
       state.data = null
+      localStorage.removeItem('access-token')
     },
   },
   extraReducers: builder => {
     builder.addCase(signupUsers.pending, state => {
       state.loading = true
+      state.error = null
+      state.success = false
     })
-    builder.addCase(signupUsers.fulfilled, (state, action: PayloadAction<userData>) => {
-      console.log(action.payload)
+    builder.addCase(signupUsers.fulfilled, (state, action: any) => {
+      state.success = true
       state.isAuth = true
       state.data = action.payload
       state.loading = false
+      state.error = null
+      localStorage.setItem('access-token', action.payload.token)
     })
-    builder.addCase(signupUsers.rejected, (state, action) => {
+    builder.addCase(signupUsers.rejected, (state, action: any) => {
       state.error = action.payload
       state.loading = false
+      state.success = false
     })
   },
 })

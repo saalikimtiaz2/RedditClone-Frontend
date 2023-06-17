@@ -1,8 +1,8 @@
 import { SignupCredentialsInterface } from 'interfaces/authSliceInterfaces'
 import { useState } from 'react'
-import { useAppDispatch } from 'hooks/useTypedSelector'
 import { useNavigate } from 'react-router-dom'
 import { signupUsers } from 'redux/reducers/authSlice'
+import { useAppDispatch } from 'redux/store'
 
 const Signup = () => {
   const navigate = useNavigate()

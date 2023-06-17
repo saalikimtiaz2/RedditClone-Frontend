@@ -18,4 +18,5 @@ export interface AuthStateInterface {
   loading: boolean
   data: userData | null
   error: any
+  success: boolean
 }

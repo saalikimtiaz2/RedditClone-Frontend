@@ -1,14 +1,18 @@
 // 1) Local Imports
-import { useAppDispatch } from 'hooks/useTypedSelector'
 import { SignupCredentialsInterface } from 'interfaces/authSliceInterfaces'
+import { useAppDispatch, useAppSelector } from 'redux/store'
 
 // 2) Packages Imports
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { BiArrowBack } from 'react-icons/bi'
-// import { useDispatch } from 'react-redux'
+import { Puff } from 'react-loader-spinner'
 import { signupUsers } from 'redux/reducers/authSlice'
+import { closeLoginModal } from 'redux/reducers/loginModalSlice'
 
 const Signup = () => {
+  const dispatch = useAppDispatch()
+  const { loading, error, success } = useAppSelector(state => state.authSlice)
+
   const [step, setStep] = useState<'one' | 'two'>('one')
   const [credentials, setCredentials] = useState<SignupCredentialsInterface>({
     name: '',
@@ -17,8 +21,6 @@ const Signup = () => {
     passwordConfirm: '',
     username: '',
   })
-
-  const dispatch = useAppDispatch()
 
   const handleUserSignup = () => {
     const authData = {
@@ -30,6 +32,12 @@ const Signup = () => {
     }
     dispatch(signupUsers(authData))
   }
+
+  useEffect(() => {
+    if (success) {
+      dispatch(closeLoginModal())
+    }
+  }, [dispatch, success])
 
   return (
     <>
@@ -127,6 +135,11 @@ const Signup = () => {
                 <input
                   type='password'
                   name='password'
+                  className={`${
+                    credentials.passwordConfirm !== '' &&
+                    credentials.password !== credentials.passwordConfirm &&
+                    'error-input'
+                  }`}
                   value={credentials.passwordConfirm}
                   onChange={evt =>
                     setCredentials({
@@ -140,6 +153,7 @@ const Signup = () => {
               <p className='text-xs text-gray-500'>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, beatae.
               </p>
+
               <div>
                 <button
                   type='submit'
@@ -147,14 +161,15 @@ const Signup = () => {
                     evt.preventDefault()
                     handleUserSignup()
                   }}
-                  disabled={credentials.passwordConfirm === '' || credentials.password === ''}
-                  className='focus:shadow-outline mt-4 w-full rounded-full bg-primary px-4 py-2 font-bold text-white focus:outline-none  disabled:opacity-50'
+                  disabled={credentials.passwordConfirm === '' || credentials.password === '' || loading}
+                  className='btn mt-4 w-full rounded-full bg-primary text-white disabled:opacity-50'
                 >
-                  Sign Up
+                  {loading ? <Puff color='#fff' width='20px' height='20px' /> : 'Signup'}
                 </button>
               </div>
             </>
           )}
+          {error !== null && <p className='mt-4 text-center text-sm text-red-600'>{error.data.message}</p>}
         </form>
       </div>
     </>

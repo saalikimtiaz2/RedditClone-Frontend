@@ -14,6 +14,12 @@
 h6 {
   @apply text-[10px] font-medium uppercase;
 }
+
+.error-input {
+  background-color: rgba(255, 3, 3, 0.123) !important;
+  border: 1px solid red !important;
+}
+
 .auth-form {
   input {
     font-size: 14px !important;
