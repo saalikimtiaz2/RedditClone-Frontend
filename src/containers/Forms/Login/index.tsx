@@ -1,27 +1,22 @@
+import { LoginCredentialsInterface } from 'interfaces/authSliceInterfaces'
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import { loginUser } from '../../../redux/reducers/authSlice'
-
-type LoginCredentials = {
-  email: string
-  password: string
-}
+import { Puff } from 'react-loader-spinner'
+import { loginUser } from 'redux/reducers/authSlice'
+import { useAppDispatch, useAppSelector } from 'redux/store'
 
 const LoginForm = () => {
-  const navigate = useNavigate()
+  const { error, loading } = useAppSelector(state => state.authSlice)
 
-  const [credentials, setCredentials] = useState<LoginCredentials>({
+  const [credentials, setCredentials] = useState<LoginCredentialsInterface>({
     email: '',
     password: '',
   })
 
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   const handleUserLogin = () => {
     if (credentials.email !== '' && credentials.password !== '') {
-      dispatch(loginUser({ password: credentials.password, email: credentials.email }))
-      navigate('/profile')
+      dispatch(loginUser(credentials))
     }
   }
 
@@ -68,12 +63,14 @@ const LoginForm = () => {
                 evt.preventDefault()
                 handleUserLogin()
               }}
-              disabled={credentials.email === '' && credentials.password === ''}
-              className='focus:shadow-outline w-full rounded-full bg-primary px-4 py-2 font-bold text-white focus:outline-none disabled:opacity-40'
+              disabled={(credentials.email === '' && credentials.password === '') || loading}
+              className='btn mt-4 w-full rounded-full bg-primary text-white disabled:opacity-50'
             >
-              Login
+              {loading ? <Puff color='#fff' width='20px' height='20px' /> : 'Login'}
             </button>
           </div>
+
+          {error !== null && <p className='mt-4 text-center text-sm text-red-600'>{error.data.message}</p>}
         </form>
       </div>
     </>

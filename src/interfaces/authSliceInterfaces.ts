@@ -1,16 +1,20 @@
-export interface userData {
-  username: string
-  name: string
+export interface LoginCredentialsInterface {
   email: string
-  photo: string
+  password: string
 }
-
 export interface SignupCredentialsInterface {
   name: string
   email: string
   password: string
   passwordConfirm: string
   username: string
+}
+
+export interface userData {
+  username: string
+  name: string
+  email: string
+  photo: string
 }
 
 export interface AuthStateInterface {

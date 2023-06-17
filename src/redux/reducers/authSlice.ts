@@ -1,18 +1,24 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
-import { AuthStateInterface, SignupCredentialsInterface, userData } from 'interfaces/authSliceInterfaces'
+import {
+  AuthStateInterface,
+  LoginCredentialsInterface,
+  SignupCredentialsInterface,
+  userData,
+} from 'interfaces/authSliceInterfaces'
+import { pendingAuthState, rejectedAuthState } from 'redux/extraReduers'
 
 const BASE_URL = import.meta.env.VITE_APP_API
 
-const initialState: AuthStateInterface = {
+const initialState = {
   isAuth: false,
   loading: false,
   success: false,
   error: null,
   data: null,
-}
+} as AuthStateInterface
 
-// -------------Signing up users --------------------
+// ------------- SIGNING UP USER --------------------
 
 export const signupUsers = createAsyncThunk('user/signup', async (data: SignupCredentialsInterface, thunkAPI: any) => {
   try {
@@ -23,14 +29,26 @@ export const signupUsers = createAsyncThunk('user/signup', async (data: SignupCr
   }
 })
 
-// -------------user slices --------------------
+// ------------- LOGGING IN USERS --------------------
+
+export const loginUser = createAsyncThunk('user/login', async (data: LoginCredentialsInterface, thunkAPI: any) => {
+  try {
+    const res = await axios.post<userData>(`${BASE_URL}users/login`, data)
+    return res.data
+  } catch (err: any) {
+    return thunkAPI.rejectWithValue({ ...err.response })
+  }
+})
+
+// ------------- USER SLICES --------------------
 
 const authSlice = createSlice({
   name: 'authUser',
   initialState,
 
+  // 1) Reducers
   reducers: {
-    loginUser(state, action) {
+    login(state, action) {
       state.data = action.payload
       state.isAuth = true
       state.error = null
@@ -43,12 +61,12 @@ const authSlice = createSlice({
       localStorage.removeItem('access-token')
     },
   },
+
+  // 2) Extra Reducers
   extraReducers: builder => {
-    builder.addCase(signupUsers.pending, state => {
-      state.loading = true
-      state.error = null
-      state.success = false
-    })
+    // 2.1) => Signin up User
+    builder.addCase(signupUsers.pending, pendingAuthState)
+    builder.addCase(signupUsers.rejected, rejectedAuthState)
     builder.addCase(signupUsers.fulfilled, (state, action: any) => {
       state.success = true
       state.isAuth = true
@@ -57,13 +75,20 @@ const authSlice = createSlice({
       state.error = null
       localStorage.setItem('access-token', action.payload.token)
     })
-    builder.addCase(signupUsers.rejected, (state, action: any) => {
-      state.error = action.payload
+
+    // 2.2) => Logging in User
+    builder.addCase(loginUser.pending, pendingAuthState)
+    builder.addCase(loginUser.rejected, rejectedAuthState)
+    builder.addCase(loginUser.fulfilled, (state, action: any) => {
+      state.success = true
+      state.isAuth = true
       state.loading = false
-      state.success = false
+      state.error = null
+      // state.data = action.payloads
+      localStorage.setItem('access-token', action.payload.token)
     })
   },
 })
 
-export const { loginUser, logout } = authSlice.actions
+export const { login, logout } = authSlice.actions
 export default authSlice.reducer

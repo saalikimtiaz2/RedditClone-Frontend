@@ -3,15 +3,14 @@ import { SignupCredentialsInterface } from 'interfaces/authSliceInterfaces'
 import { useAppDispatch, useAppSelector } from 'redux/store'
 
 // 2) Packages Imports
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { BiArrowBack } from 'react-icons/bi'
 import { Puff } from 'react-loader-spinner'
 import { signupUsers } from 'redux/reducers/authSlice'
-import { closeLoginModal } from 'redux/reducers/loginModalSlice'
 
 const Signup = () => {
   const dispatch = useAppDispatch()
-  const { loading, error, success } = useAppSelector(state => state.authSlice)
+  const { loading, error } = useAppSelector(state => state.authSlice)
 
   const [step, setStep] = useState<'one' | 'two'>('one')
   const [credentials, setCredentials] = useState<SignupCredentialsInterface>({
@@ -32,12 +31,6 @@ const Signup = () => {
     }
     dispatch(signupUsers(authData))
   }
-
-  useEffect(() => {
-    if (success) {
-      dispatch(closeLoginModal())
-    }
-  }, [dispatch, success])
 
   return (
     <>

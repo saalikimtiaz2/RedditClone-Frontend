@@ -166,18 +166,18 @@ function Header() {
           <div className='relative'>
             <Menu as='div' className='relative inline-block text-left'>
               <Menu.Button
-                className={`flex items-center gap-x-4 rounded-lg border border-gray-100 ${
+                className={`flex items-center gap-x-4 rounded-lg border border-gray-200 ${
                   isAuth ? 'p-1' : 'px-4 py-3'
                 } dark:border-gray-700`}
               >
                 {isAuth ? (
                   <div className='flex items-center justify-between'>
-                    <div className='flex items-center gap-x-2 md:w-52'>
+                    <div className='flex items-center gap-x-2 xs:w-14 md:w-52'>
                       <img
                         src='https://johannesippen.com/img/blog/humans-not-users/header.jpg'
                         className='h-10 w-10 rounded-lg object-cover object-center'
                       />
-                      <div className='text-left'>
+                      <div className='text-left xs:hidden md:inline'>
                         <p className='text-sm'>username</p>
                         <p className='text-xs text-gray-500'>1 karma</p>
                       </div>
