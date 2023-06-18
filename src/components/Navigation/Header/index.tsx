@@ -211,9 +211,9 @@ function Header() {
                             active
                               ? 'bg-gray-200 dark:bg-gray-700'
                               : 'bg-white text-black dark:bg-gray-800 dark:text-white'
-                          } group flex w-full items-center gap-x-4 px-8 py-2 text-sm`}
+                          } group flex w-full items-center gap-x-4 whitespace-nowrap px-8 py-2 text-sm `}
                         >
-                          <span className='whitespace-nowrap text-xl'>{item.icon}</span> {item.label}
+                          <span className='text-xl'>{item.icon}</span> {item.label}
                         </button>
                       )}
                     </Menu.Item>
