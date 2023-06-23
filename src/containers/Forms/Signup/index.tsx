@@ -162,7 +162,7 @@ const Signup = () => {
               </div>
             </>
           )}
-          {error !== null && <p className='mt-4 text-center text-sm text-red-600'>{error.data.message}</p>}
+          {/* {error !== null && <p className='mt-4 text-center text-sm text-red-600'>{error.data.message}</p>} */}
         </form>
       </div>
     </>
