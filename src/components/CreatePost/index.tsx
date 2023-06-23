@@ -9,7 +9,7 @@ function CreatePost() {
     <>
       <div className='pb-4'>
         <div className='flex items-center gap-x-2 rounded bg-white p-2 dark:bg-gray-700'>
-          <Avatar active circle />
+          <Avatar active circle size='md' />
           <button
             onClick={() => navigate('/submit?type=post')}
             className='btn grow rounded border border-gray-200 py-2 hover:border-gray-700 dark:border-gray-600 dark:hover:border-gray-300'

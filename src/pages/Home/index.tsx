@@ -21,7 +21,7 @@ function Home() {
         <div className='xs:px-10 lg:px-32'>{!isAuth && <TrendingPosts />}</div>
         <section className='md:px-10 lg:px-32'>
           {!isAuth && (
-            <h3 className='z-50 pb-2 text-sm font-semibold text-gray-800 dark:text-gray-200 xs:pl-2 md:pl-0'>
+            <h3 className='z-50 mt-4 pb-2 text-sm font-semibold text-gray-800 dark:text-gray-200 xs:pl-2 md:pl-0'>
               Popular today
             </h3>
           )}

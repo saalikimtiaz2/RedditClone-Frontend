@@ -108,7 +108,7 @@ const Header = ({ showDD }: { showDD?: boolean }) => {
                       <button
                         className={`${
                           active
-                            ? 'bg-gray-200 dark:bg-gray-700'
+                            ? 'bg-gray-200/50 dark:bg-gray-700'
                             : 'bg-white text-black dark:bg-gray-800 dark:text-white'
                         } group flex w-full items-center gap-x-4 px-8 py-2 text-sm`}
                       >
@@ -124,7 +124,7 @@ const Header = ({ showDD }: { showDD?: boolean }) => {
                       <button
                         className={`${
                           active
-                            ? 'bg-gray-200 dark:bg-gray-700'
+                            ? 'bg-gray-200/50 dark:bg-gray-700'
                             : 'bg-white text-black dark:bg-gray-800 dark:text-white'
                         } group flex w-full items-center gap-x-4 px-8 py-2 text-sm`}
                       >
@@ -163,13 +163,13 @@ const Header = ({ showDD }: { showDD?: boolean }) => {
             <Menu as='div' className='relative inline-block text-left'>
               <Menu.Button
                 className={`flex items-center gap-x-4 rounded-lg border border-gray-200 ${
-                  isAuth ? 'p-1' : 'px-4 py-3'
+                  isAuth ? 'px-2 py-1' : 'px-4 py-3'
                 } dark:border-gray-700`}
               >
                 {isAuth ? (
                   <div className='flex items-center justify-between'>
                     <div className='flex items-center gap-x-2 xs:w-14 md:w-52'>
-                      <Avatar active />
+                      <Avatar active size='sm' />
                       <div className='text-left xs:hidden md:inline'>
                         <p className='text-sm'>username</p>
                         <p className='text-xs text-gray-500'>1 karma</p>
@@ -193,7 +193,7 @@ const Header = ({ showDD }: { showDD?: boolean }) => {
               >
                 <Menu.Items
                   className={`absolute right-0 ${
-                    isAuth ? 'top-12' : 'top-6 '
+                    isAuth ? 'top-10' : 'top-6 '
                   } z-50 mt-2 w-56 origin-top-right overflow-hidden border-x border-b border-gray-100 bg-white  ring-1 ring-black ring-opacity-5 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white`}
                 >
                   {navList.map((item: feedsInterface) => (

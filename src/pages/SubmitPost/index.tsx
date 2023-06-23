@@ -79,8 +79,8 @@ function SubmitPost() {
                     <Tab
                       key={post.label}
                       className={({ selected }) =>
-                        `relative flex w-1/3 items-center justify-center gap-x-2 overflow-hidden border-b border-r border-gray-200 py-3 last-of-type:border-r-0 disabled:cursor-not-allowed disabled:opacity-20 dark:border-gray-700 ${
-                          selected ? 'selectedTab' : 'hover:bg-gray-200  dark:hover:bg-gray-700'
+                        `relative flex w-1/3 items-center justify-center gap-x-2 overflow-hidden border-b border-r border-gray-200 py-3 font-semibold last-of-type:border-r-0 hover:bg-secondary/5 disabled:cursor-not-allowed disabled:opacity-20 dark:border-gray-700  dark:hover:bg-gray-700 ${
+                          selected && 'selectedTab text-secondary dark:text-white'
                         }`
                       }
                       onClick={removeQueryParams}

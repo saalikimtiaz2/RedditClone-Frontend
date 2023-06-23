@@ -3,4 +3,5 @@ export interface TrendingPostInterface {
   title: string
   subtitle: string
   category: string
+  listView?: boolean
 }
