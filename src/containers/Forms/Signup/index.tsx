@@ -10,7 +10,7 @@ import { signupUsers } from 'redux/reducers/authSlice'
 
 const Signup = () => {
   const dispatch = useAppDispatch()
-  const { loading, error } = useAppSelector(state => state.authSlice)
+  const { loading } = useAppSelector(state => state.authSlice)
 
   const [step, setStep] = useState<'one' | 'two'>('one')
   const [credentials, setCredentials] = useState<SignupCredentialsInterface>({
