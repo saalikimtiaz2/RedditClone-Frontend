@@ -1,4 +1,5 @@
 import Collapseable from 'components/Collapseable'
+import CreatePost from 'components/CreatePost'
 import Layout from 'components/Layout'
 import PostCard from 'components/PostCard'
 import TrendingPosts from 'containers/TrendingPosts'
@@ -9,20 +10,24 @@ import { CgAlignTop } from 'react-icons/cg'
 import { FiMoreHorizontal } from 'react-icons/fi'
 import { MdOutlineNewReleases } from 'react-icons/md'
 import { TbSection } from 'react-icons/tb'
+import { useAppSelector } from 'redux/store'
 
 function Home() {
+  const { isAuth } = useAppSelector(state => state.authSlice)
+
   return (
-    <Layout>
-      <div className='min-h-screen '>
-        <div className='xs:px-10 lg:px-32'>
-          <TrendingPosts />
-        </div>
+    <Layout closedSidebar={isAuth}>
+      <div className='mx-auto min-h-screen md:container'>
+        <div className='xs:px-10 lg:px-32'>{!isAuth && <TrendingPosts />}</div>
         <section className='md:px-10 lg:px-32'>
-          <h3 className='z-50 pb-2 pt-6 text-sm font-semibold text-gray-800 dark:text-gray-200 xs:pl-2 md:pl-0'>
-            Popular today
-          </h3>
-          <div className='grid grid-cols-12 gap-4'>
+          {!isAuth && (
+            <h3 className='z-50 pb-2 text-sm font-semibold text-gray-800 dark:text-gray-200 xs:pl-2 md:pl-0'>
+              Popular today
+            </h3>
+          )}
+          <div className='grid grid-cols-12 gap-4 pt-4'>
             <div className='xs:col-span-12 md:col-span-8'>
+              {isAuth && <CreatePost />}
               <div className='mb-4 flex items-center justify-between rounded border border-gray-200 bg-white px-4 py-2 dark:border-gray-600 dark:bg-gray-700 xs:mx-2 md:mx-0'>
                 <div className='flex items-center gap-x-2'>
                   <button className='btn btn-sm rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-600 hover:dark:bg-gray-500'>

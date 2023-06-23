@@ -1,5 +1,6 @@
 @import './colors';
 @import './buttons.scss';
+@import './input.scss';
 
 @import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&display=swap');
 
@@ -14,43 +15,6 @@
 h6 {
   @apply text-[10px] font-medium uppercase;
 }
-
-.error-input {
-  background-color: rgba(255, 3, 3, 0.123) !important;
-  border: 1px solid red !important;
-}
-
-.auth-form {
-  input {
-    font-size: 14px !important;
-    @apply mb-4 w-full rounded-full border border-gray-200 bg-gray-200 bg-opacity-50 px-4
-      pb-1 pt-4 outline-none transition-all duration-300 ease-in-out;
-    &:hover,
-    &:focus {
-      @apply border-gray-700;
-    }
-  }
-  input:hover + .floating-label,
-  input:focus + .floating-label,
-  input:not([value='']):valid ~ .floating-label {
-    top: 4px;
-    font-size: 12px;
-    font-weight: 300;
-    opacity: 1;
-  }
-
-  .floating-label {
-    position: absolute;
-    font-size: 14px;
-    pointer-events: none;
-    left: 18px;
-    top: 20%;
-    font-weight: 500;
-    @apply text-gray-500;
-    transition: 0.2s ease all;
-  }
-}
-
 .overlay {
   &::after {
     content: '';
@@ -61,6 +25,18 @@ h6 {
 
 .post-canvas {
   @apply xs:h-[220px] md:h-[300px];
+}
+
+.selectedTab {
+  &::after {
+    content: ' ';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: white;
+  }
 }
 
 .dark {

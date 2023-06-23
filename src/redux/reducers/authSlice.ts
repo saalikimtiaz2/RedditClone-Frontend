@@ -48,6 +48,12 @@ const authSlice = createSlice({
 
   // 1) Reducers
   reducers: {
+    authanticateUser(state) {
+      console.log('triggered auth')
+      if (localStorage.getItem('accessToken')) {
+        state.isAuth = true
+      }
+    },
     login(state, action) {
       state.data = action.payload
       state.isAuth = true
@@ -89,6 +95,5 @@ const authSlice = createSlice({
     })
   },
 })
-
 export const { login, logout } = authSlice.actions
 export default authSlice.reducer

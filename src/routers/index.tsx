@@ -9,8 +9,9 @@ const About = lazy(() => import('../pages/About'))
 const SingUp = lazy(() => import('../pages/AuthPages/Signup'))
 const Login = lazy(() => import('../pages/AuthPages/Login'))
 
-// ------------auth pages---------------------
+// ------------private pages---------------------
 const Profile = lazy(() => import('../pages/Profile'))
+const SubmitPost = lazy(() => import('../pages/SubmitPost'))
 
 // ------------not found page---------------------
 const NotFound404 = lazy(() => import('../pages/404'))
@@ -31,7 +32,10 @@ function Routers() {
           <Route path='/signup' element={<SingUp />} />
           <Route path='/login' element={<Login />} />
 
-          {/* ---------------------------Auth Pages----------------------------------- */}
+          {/* ---------------------------Private Pages----------------------------------- */}
+          {/* <Route path='/submit' element={<PrivateRoute />}> */}
+          <Route path='/submit' element={<SubmitPost />} />
+          {/* </Route> */}
           <Route path='/profile' element={<PrivateRoute />}>
             <Route path='/profile' element={<Profile />} />
           </Route>

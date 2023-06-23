@@ -7,16 +7,18 @@ import SignupForm from 'containers/Forms/Signup'
 import { feedsInterface, topicsInterface } from 'interfaces/menuInterfaces'
 import { useAppDispatch, useAppSelector } from 'redux/store'
 // Package dependencies imports
+import Avatar from 'components/Avatar'
+import SearchBar from 'components/SearchBar'
 import dayjs from 'dayjs'
 import { Fragment, useEffect, useState } from 'react'
 import { AiOutlineUser } from 'react-icons/ai'
-import { BsChevronDown, BsFillArrowUpRightCircleFill, BsQrCodeScan, BsReddit, BsSearch } from 'react-icons/bs'
+import { BsChevronDown, BsFillArrowUpRightCircleFill, BsQrCodeScan, BsReddit } from 'react-icons/bs'
 import { FiLogOut } from 'react-icons/fi'
 import { logout } from 'redux/reducers/authSlice'
 import { closeLoginModal, openLoginModal } from 'redux/reducers/loginModalSlice'
 import { colors } from 'styles/colors'
 
-function Header() {
+const Header = ({ showDD }: { showDD?: boolean }) => {
   const { isLoginModalOpen, isSignupModal } = useAppSelector(state => state.loginModalSlice)
   const { isAuth } = useAppSelector(state => state.authSlice)
   const dispatch = useAppDispatch()
@@ -84,7 +86,7 @@ function Header() {
           <span className='text-lg xs:hidden lg:inline'>reddit</span>
         </button>
 
-        <div className='lg:hidden'>
+        <div className={`${!showDD && 'lg:hidden'}`}>
           <Menu as='div' className='relative inline-block text-left'>
             <Menu.Button className='flex items-center gap-x-4 rounded-lg border border-gray-100 px-4 py-3 dark:border-gray-700'>
               <BsFillArrowUpRightCircleFill /> <BsChevronDown />
@@ -136,26 +138,20 @@ function Header() {
           </Menu>
         </div>
 
-        <div
-          className={`flex items-center overflow-hidden rounded-full border border-gray-500 dark:bg-gray-700 dark:hover:border-gray-200 dark:hover:bg-gray-800 xs:pl-2 md:w-2/5  lg:pl-4 `}
-        >
-          <BsSearch />
-          <input
-            placeholder='Search Reddit'
-            type='text'
-            className='grow bg-transparent py-2 outline-none  xs:px-2 xs:text-xs lg:px-4 lg:text-base'
-          />
-        </div>
+        <SearchBar />
 
         <div className='flex items-center gap-x-4'>
           <div className='items-center gap-x-4 xs:hidden md:flex'>
-            <button className='btn btn-gray rounded-full' onClick={toggleQrOpen}>
-              <BsQrCodeScan /> Get The App
-            </button>
             {!isAuth && (
-              <button className='btn btn-primary rounded-full' onClick={authModalOpen}>
-                Login
-              </button>
+              <>
+                <button className='btn btn-gray rounded-full' onClick={toggleQrOpen}>
+                  <BsQrCodeScan /> Get The App
+                </button>
+
+                <button className='btn btn-primary rounded-full' onClick={authModalOpen}>
+                  Login
+                </button>
+              </>
             )}
           </div>
           {/* <button className='btn btn-sm rounded-lg border border-gray-400'>
@@ -173,10 +169,7 @@ function Header() {
                 {isAuth ? (
                   <div className='flex items-center justify-between'>
                     <div className='flex items-center gap-x-2 xs:w-14 md:w-52'>
-                      <img
-                        src='https://johannesippen.com/img/blog/humans-not-users/header.jpg'
-                        className='h-10 w-10 rounded-lg object-cover object-center'
-                      />
+                      <Avatar active />
                       <div className='text-left xs:hidden md:inline'>
                         <p className='text-sm'>username</p>
                         <p className='text-xs text-gray-500'>1 karma</p>
