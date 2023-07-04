@@ -14,8 +14,8 @@ const SearchBar = () => {
     <>
       <div
         className={`relative flex items-center ${
-          showSearchBar ? 'rounded-t-2xl dark:bg-gray-800' : 'rounded-full'
-        } w-2/5 border border-secondary dark:border-gray-300 dark:bg-gray-700  dark:hover:border-gray-200 dark:hover:bg-gray-800 xs:pl-2 lg:pl-4 `}
+          showSearchBar ? 'rounded-t-2xl border-secondary dark:bg-gray-800' : 'rounded-full'
+        } w-2/5 border  dark:border-gray-300 dark:bg-gray-700  dark:hover:border-gray-200 dark:hover:bg-gray-800 xs:pl-2 lg:pl-4 `}
       >
         <BsSearch />
         <input
@@ -29,14 +29,14 @@ const SearchBar = () => {
           <Transition appear show={showSearchBar} as={Fragment}>
             <Transition.Child
               as={Fragment}
-              enter='ease-out duration-500'
+              enter='ease-out duration-300'
               enterFrom='opacity-80 -translate-y-52'
               enterTo='opacity-100 translate-y-0'
-              leave='ease-in duration-200'
+              leave='ease-in duration-300'
               leaveFrom='opacity-100 translate-y-0'
               leaveTo='opacity-0 -translate-y-52'
             >
-              <div className='absolute left-0 right-0 top-10 max-h-[550px] overflow-hidden overflow-y-scroll rounded-b-md border-x border-b border-gray-200 bg-white shadow dark:border-gray-800 dark:bg-gray-800 dark:shadow-white/30'>
+              <div className='absolute left-0 right-0 top-10 max-h-[550px] overflow-x-hidden overflow-y-scroll rounded-b-md border-x border-b border-gray-200 bg-white shadow dark:border-gray-800 dark:bg-gray-800 dark:shadow-white/30'>
                 <p className='p-4 text-sm uppercase text-gray-500'>Trending today</p>
                 {AllTrendingPosts.map(trend => (
                   <TrendingPostCard {...trend} key={trend.title} listView />

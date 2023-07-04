@@ -88,7 +88,7 @@ const Header = ({ showDD }: { showDD?: boolean }) => {
 
         <div className={`${!showDD && 'lg:hidden'}`}>
           <Menu as='div' className='relative inline-block text-left'>
-            <Menu.Button className='flex items-center gap-x-4 rounded-lg border border-gray-100 px-4 py-3 dark:border-gray-700'>
+            <Menu.Button className='flex items-center gap-x-4 rounded-lg border border-gray-200 px-4 py-3 hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-700'>
               <BsFillArrowUpRightCircleFill /> <BsChevronDown />
             </Menu.Button>
             <Transition
