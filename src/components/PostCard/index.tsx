@@ -9,7 +9,7 @@ import { openSignupModal } from 'redux/reducers/loginModalSlice'
 import { useAppDispatch, useAppSelector } from 'redux/store'
 
 const PostCard: FC<postInterface> = ({
-  id,
+  _id,
   imageUrl,
   title,
   overview: subtitle,
@@ -26,7 +26,7 @@ const PostCard: FC<postInterface> = ({
 
   return (
     <div
-      onClick={() => navitgate(`/post/${id}`)}
+      onClick={() => navitgate(`/post/${_id}`)}
       className='mb-4 flex cursor-pointer overflow-hidden rounded border border-gray-200 bg-gray-200 shadow-xl hover:border-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:shadow-gray-800 hover:dark:border-gray-500 xs:flex-col-reverse md:flex-row'
     >
       <div className='flex h-full items-center gap-2 bg-gray-200 p-2 dark:bg-gray-800 xs:flex-row md:flex-col '>

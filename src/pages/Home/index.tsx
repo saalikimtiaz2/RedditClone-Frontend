@@ -61,7 +61,7 @@ function Home() {
                 </button>
               </div>
               {AllPosts.map((post: postInterface) => (
-                <PostCard key={post.id} {...post} />
+                <PostCard key={post._id} {...post} />
               ))}
             </div>
             <div className='xs:col-span-12 xs:px-2 md:col-span-4 md:px-0'>
