@@ -5,7 +5,7 @@ import Router from './routers'
 function App() {
   return (
     <>
-      <ToastContainer position='top-center' pauseOnHover theme='colored' />
+      <ToastContainer position='bottom-center' pauseOnHover theme='colored' />
       <Router />
     </>
   )

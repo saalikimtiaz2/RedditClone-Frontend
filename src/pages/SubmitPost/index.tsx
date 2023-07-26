@@ -29,11 +29,13 @@ const tabList: postTypes[] = [
     label: 'Image & Video',
     icon: <CiImageOn />,
     body: <Media />,
+    disabled: true,
   },
   {
     label: 'URL',
     icon: <BsLink45Deg />,
     body: <URL />,
+    disabled: true,
   },
 ]
 

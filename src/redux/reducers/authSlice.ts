@@ -22,7 +22,7 @@ const initialState = {
 
 export const signupUsers = createAsyncThunk('user/signup', async (data: SignupCredentialsInterface, thunkAPI: any) => {
   try {
-    const res = await axios.post<userData>(`${BASE_URL}users/signup`, data)
+    const res = await axios.post<userData>(`${BASE_URL}/users/signup`, data)
     console.log(res)
     return res.data
   } catch (err: any) {
@@ -35,7 +35,7 @@ export const signupUsers = createAsyncThunk('user/signup', async (data: SignupCr
 
 export const loginUser = createAsyncThunk('user/login', async (data: LoginCredentialsInterface, thunkAPI: any) => {
   try {
-    const res = await axios.post<userData>(`${BASE_URL}users/login`, data)
+    const res = await axios.post<userData>(`${BASE_URL}/users/login`, data)
     return res.data
   } catch (err: any) {
     return thunkAPI.rejectWithValue({ ...err.response })

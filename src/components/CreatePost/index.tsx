@@ -18,13 +18,15 @@ function CreatePost() {
           </button>
           <button
             onClick={() => navigate('/submit?type=media')}
-            className='rounded-md p-2 text-xl text-gray-500 hover:bg-gray-100 hover:dark:bg-gray-600'
+            className='rounded-md p-2 text-xl text-gray-500 hover:bg-gray-100 disabled:cursor-not-allowed disabled:bg-transparent hover:dark:bg-gray-600'
+            disabled
           >
             <CiImageOn className='text-2xl' />
           </button>
           <button
             onClick={() => navigate('/submit?type=url')}
-            className='rounded-md p-2 text-xl text-gray-500 hover:bg-gray-100 hover:dark:bg-gray-600'
+            className='rounded-md p-2 text-xl text-gray-500 hover:bg-gray-100 disabled:cursor-not-allowed disabled:bg-transparent hover:dark:bg-gray-600'
+            disabled
           >
             <BsLink45Deg className='text-2xl' />
           </button>

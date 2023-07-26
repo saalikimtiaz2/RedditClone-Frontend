@@ -11,6 +11,7 @@ export interface SignupCredentialsInterface {
 }
 
 export interface userData {
+  id: string
   username: string
   name: string
   email: string

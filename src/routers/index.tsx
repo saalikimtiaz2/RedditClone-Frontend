@@ -12,6 +12,7 @@ const Login = lazy(() => import('../pages/AuthPages/Login'))
 // ------------private pages---------------------
 const Profile = lazy(() => import('../pages/Profile'))
 const SubmitPost = lazy(() => import('../pages/SubmitPost'))
+const PostDetails = lazy(() => import('../pages/PostDetails'))
 
 // ------------not found page---------------------
 const NotFound404 = lazy(() => import('../pages/404'))
@@ -35,6 +36,7 @@ function Routers() {
           {/* ---------------------------Private Pages----------------------------------- */}
           {/* <Route path='/submit' element={<PrivateRoute />}> */}
           <Route path='/submit' element={<SubmitPost />} />
+          <Route path='/post/:id' element={<PostDetails />} />
           {/* </Route> */}
           <Route path='/profile' element={<PrivateRoute />}>
             <Route path='/profile' element={<Profile />} />

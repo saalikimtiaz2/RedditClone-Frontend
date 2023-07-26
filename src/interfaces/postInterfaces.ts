@@ -1,11 +1,13 @@
 export interface postInterface {
-  id: string
-  imageUrl: string
+  _id: string
+  postType: string
+  imageUrl?: string
   title: string
-  subtitle?: string
-  category: string
-  categoryImage: string
-  user: string
+  overview?: string
+  category?: string
+  categoryImage?: string
+  postedBy: string
   postTime: string
   likes: number
+  disLikes: number
 }
