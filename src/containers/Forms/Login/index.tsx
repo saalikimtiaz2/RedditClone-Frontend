@@ -1,18 +1,16 @@
 import { LoginCredentialsInterface } from 'interfaces/authSliceInterfaces'
 import { useState } from 'react'
-import { Puff } from 'react-loader-spinner'
 import { loginUser } from 'redux/reducers/authSlice'
+import { closeLoginModal } from 'redux/reducers/loginModalSlice'
 import { useAppDispatch, useAppSelector } from 'redux/store'
 
 const LoginForm = () => {
-  const { error, loading } = useAppSelector(state => state.authSlice)
+  const { error, loading, isAuth } = useAppSelector(state => state.authSlice)
 
   const [credentials, setCredentials] = useState<LoginCredentialsInterface>({
     email: '',
     password: '',
   })
-
-  console.log(error)
 
   const dispatch = useAppDispatch()
 
@@ -20,6 +18,10 @@ const LoginForm = () => {
     if (credentials.email !== '' && credentials.password !== '') {
       dispatch(loginUser(credentials))
     }
+  }
+
+  if (isAuth) {
+    dispatch(closeLoginModal())
   }
 
   return (
@@ -68,7 +70,8 @@ const LoginForm = () => {
               disabled={(credentials.email === '' && credentials.password === '') || loading}
               className='btn mt-4 w-full rounded-full bg-primary text-white disabled:opacity-50'
             >
-              {loading ? <Puff color='#fff' width='20px' height='20px' /> : 'Login'}
+              {/* {loading ? <Puff color='#fff' width='20px' height='20px' /> : 'Login'} */}
+              Login
             </button>
           </div>
 

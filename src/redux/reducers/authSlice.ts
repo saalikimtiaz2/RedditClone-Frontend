@@ -23,8 +23,10 @@ const initialState = {
 export const signupUsers = createAsyncThunk('user/signup', async (data: SignupCredentialsInterface, thunkAPI: any) => {
   try {
     const res = await axios.post<userData>(`${BASE_URL}users/signup`, data)
+    console.log(res)
     return res.data
   } catch (err: any) {
+    console.log(err)
     return thunkAPI.rejectWithValue({ ...err.response })
   }
 })

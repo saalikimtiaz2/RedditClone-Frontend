@@ -1,5 +1,6 @@
 // 1) Local Imports
 import { SignupCredentialsInterface } from 'interfaces/authSliceInterfaces'
+import { closeLoginModal } from 'redux/reducers/loginModalSlice'
 import { useAppDispatch, useAppSelector } from 'redux/store'
 
 // 2) Packages Imports
@@ -10,7 +11,7 @@ import { signupUsers } from 'redux/reducers/authSlice'
 
 const Signup = () => {
   const dispatch = useAppDispatch()
-  const { loading } = useAppSelector(state => state.authSlice)
+  const { loading, isAuth } = useAppSelector(state => state.authSlice)
 
   const [step, setStep] = useState<'one' | 'two'>('one')
   const [credentials, setCredentials] = useState<SignupCredentialsInterface>({
@@ -30,6 +31,10 @@ const Signup = () => {
       username: credentials.username,
     }
     dispatch(signupUsers(authData))
+  }
+
+  if (isAuth) {
+    dispatch(closeLoginModal())
   }
 
   return (
