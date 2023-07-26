@@ -5,7 +5,7 @@ import { closeLoginModal } from 'redux/reducers/loginModalSlice'
 import { useAppDispatch, useAppSelector } from 'redux/store'
 
 const LoginForm = () => {
-  const { error, loading, isAuth } = useAppSelector(state => state.authSlice)
+  const { loading, isAuth } = useAppSelector(state => state.authSlice)
 
   const [credentials, setCredentials] = useState<LoginCredentialsInterface>({
     email: '',
