@@ -28,6 +28,7 @@ function Routers() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/about' element={<About />} />
+          <Route path='/post/:id' element={<PostDetails />} />
 
           {/* ---------------------------Auth Pages----------------------------------- */}
           <Route path='/signup' element={<SingUp />} />
@@ -35,8 +36,9 @@ function Routers() {
 
           {/* ---------------------------Private Pages----------------------------------- */}
           {/* <Route path='/submit' element={<PrivateRoute />}> */}
-          <Route path='/submit' element={<SubmitPost />} />
-          <Route path='/post/:id' element={<PostDetails />} />
+          <Route path='/submit' element={<PrivateRoute />}>
+            <Route path='/submit' element={<SubmitPost />} />
+          </Route>
           {/* </Route> */}
           <Route path='/profile' element={<PrivateRoute />}>
             <Route path='/profile' element={<Profile />} />
