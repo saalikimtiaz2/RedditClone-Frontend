@@ -1,5 +1,6 @@
 import { LoginCredentialsInterface } from 'interfaces/authSliceInterfaces'
 import { useState } from 'react'
+import { Puff } from 'react-loader-spinner'
 import { loginUser } from 'redux/reducers/authSlice'
 import { closeLoginModal } from 'redux/reducers/loginModalSlice'
 import { useAppDispatch, useAppSelector } from 'redux/store'
@@ -70,8 +71,7 @@ const LoginForm = () => {
               disabled={(credentials.email === '' && credentials.password === '') || loading}
               className='btn mt-4 w-full rounded-full bg-primary text-white disabled:opacity-50'
             >
-              {/* {loading ? <Puff color='#fff' width='20px' height='20px' /> : 'Login'} */}
-              Login
+              {loading ? <Puff color='#fff' width='20px' height='20px' /> : 'Login'}
             </button>
           </div>
 
