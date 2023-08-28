@@ -1,12 +1,18 @@
+import Layout from 'components/Layout'
 import LoginForm from 'containers/Forms/Login'
 
 const Login = () => {
   return (
-    <div className='flex h-screen items-center justify-center bg-gradient-to-b from-primary to-secondary'>
-      <div className='max-w-md rounded-lg bg-white bg-opacity-40 px-8 py-6 shadow-md backdrop-blur-sm'>
-        <LoginForm />
+    <Layout closedSidebar isAuthPage>
+      <div className='min-h-screen'>
+        <div className='grid h-screen grid-cols-12 gap-4 bg-white dark:bg-black'>
+          <div className='h-full bg-primary p-4 xs:col-span-1 md:col-span-1' />
+          <div className='flex items-center  xs:col-span-12 md:col-span-4'>
+            <LoginForm />
+          </div>
+        </div>
       </div>
-    </div>
+    </Layout>
   )
 }
 

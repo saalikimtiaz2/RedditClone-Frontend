@@ -18,7 +18,7 @@ import { logout } from 'redux/reducers/authSlice'
 import { closeLoginModal, openLoginModal } from 'redux/reducers/loginModalSlice'
 import { colors } from 'styles/colors'
 
-const Header = ({ showDD }: { showDD?: boolean }) => {
+const Header = ({ showDD, isAuthPage }: { showDD?: boolean; isAuthPage?: boolean }) => {
   const { isLoginModalOpen, isSignupModal } = useAppSelector(state => state.loginModalSlice)
   const { isAuth } = useAppSelector(state => state.authSlice)
   const dispatch = useAppDispatch()
@@ -148,9 +148,11 @@ const Header = ({ showDD }: { showDD?: boolean }) => {
                   <BsQrCodeScan /> Get The App
                 </button>
 
-                <button className='btn btn-primary rounded-full' onClick={authModalOpen}>
-                  Login
-                </button>
+                {!isAuthPage && (
+                  <button className='btn btn-primary rounded-full' onClick={authModalOpen}>
+                    Login
+                  </button>
+                )}
               </>
             )}
           </div>
@@ -211,28 +213,33 @@ const Header = ({ showDD }: { showDD?: boolean }) => {
                       )}
                     </Menu.Item>
                   ))}
-                  <div className='mx-6 border-b border-gray-200 dark:border-gray-600' />
-                  <Menu.Item>
-                    {({ active }) => (
-                      <button
-                        className={`${
-                          active
-                            ? 'bg-gray-200 dark:bg-gray-700'
-                            : 'bg-white text-black dark:bg-gray-800 dark:text-white'
-                        } group flex w-full items-center gap-x-4 px-8 py-2 text-sm`}
-                        onClick={() => {
-                          if (isAuth) {
-                            dispatch(logout())
-                          } else {
-                            authModalOpen()
-                          }
-                        }}
-                      >
-                        <FiLogOut className='3xl' />
-                        {isAuth ? 'Logout' : 'Login/Signup'}
-                      </button>
-                    )}
-                  </Menu.Item>
+
+                  {!isAuthPage && (
+                    <>
+                      <div className='mx-6 border-b border-gray-200 dark:border-gray-600' />
+                      <Menu.Item>
+                        {({ active }) => (
+                          <button
+                            className={`${
+                              active
+                                ? 'bg-gray-200 dark:bg-gray-700'
+                                : 'bg-white text-black dark:bg-gray-800 dark:text-white'
+                            } group flex w-full items-center gap-x-4 px-8 py-2 text-sm`}
+                            onClick={() => {
+                              if (isAuth) {
+                                dispatch(logout())
+                              } else {
+                                authModalOpen()
+                              }
+                            }}
+                          >
+                            <FiLogOut className='3xl' />
+                            {isAuth ? 'Logout' : 'Login/Signup'}
+                          </button>
+                        )}
+                      </Menu.Item>
+                    </>
+                  )}
                   {isAuth && (
                     <p className='py-4 text-center text-xs text-gray-500'>
                       Reddit-Clone Inc, &copy; {dayjs(Date.now()).format('YYYY')} all rights reserved.

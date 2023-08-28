@@ -40,8 +40,8 @@ const Signup = () => {
   return (
     <>
       <div className='md:px-10 md:pt-10'>
-        <h2 className='text-lg font-bold text-gray-800'>Signup</h2>
-        <p className='mb-10 text-xs'>
+        <h2 className='text-lg font-bold text-gray-800 dark:text-white'>Signup</h2>
+        <p className='mb-10 text-xs text-gray-500'>
           By continuing, you are setting up a Reddit account and agree to our User Agreement and Privacy Policy.
         </p>
         <form className='auth-form'>
@@ -110,7 +110,7 @@ const Signup = () => {
                   evt.preventDefault()
                   setStep('one')
                 }}
-                className='btn btn-sm mb-4 rounded-full bg-gray-100 hover:bg-gray-200'
+                className='btn btn-sm mb-4 rounded-full bg-gray-100 text-black hover:bg-gray-200 dark:bg-opacity-30 dark:hover:bg-opacity-100'
               >
                 <BiArrowBack /> Back
               </button>

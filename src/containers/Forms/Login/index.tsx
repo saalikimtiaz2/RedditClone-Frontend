@@ -28,8 +28,8 @@ const LoginForm = () => {
   return (
     <>
       <div className='md:px-10 md:pt-10'>
-        <h3 className=' text-lg font-bold text-gray-800'>Login</h3>
-        <p className='mb-10 text-xs'>
+        <h3 className=' text-lg font-bold text-gray-800 dark:text-white'>Login</h3>
+        <p className='mb-10 text-xs text-gray-500'>
           By continuing, you are setting up a Reddit account and agree to our User Agreement and Privacy Policy.
         </p>
         <form className='auth-form'>
